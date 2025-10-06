@@ -21,6 +21,9 @@ razorpay_client = razorpay.Client(auth=(
     os.getenv("RAZOR_KEY_SECRET")
 ))
 
+@app.route('/test')
+def test_page():
+    return "Test route working perfectly!"
 # MySQL connection
 '''def get_db_connection():
     return mysql.connector.connect(
@@ -31,12 +34,15 @@ razorpay_client = razorpay.Client(auth=(
     )'''
 
 
-db = mysql.connector.connect(
-    host=os.getenv("DB_HOST"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASS"),
-    database=os.getenv("DB_NAME")
-)
+def get_db_connection():
+    connection = mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASS"),
+        database=os.getenv("DB_NAME")
+    )
+    return connection
+
 
 
 @app.route("/")
@@ -1388,4 +1394,5 @@ def move_to_cart():
 
 
 if __name__ == "__main__":
+
     app.run(host='0.0.0.0', port=5000)
