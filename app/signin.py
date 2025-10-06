@@ -21,9 +21,7 @@ razorpay_client = razorpay.Client(auth=(
     os.getenv("RAZOR_KEY_SECRET")
 ))
 
-@app.route('/test')
-def test_page():
-    return "Test route working perfectly!"
+
 # MySQL connection
 '''def get_db_connection():
     return mysql.connector.connect(
@@ -1396,5 +1394,6 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
 
 
